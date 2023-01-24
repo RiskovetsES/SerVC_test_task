@@ -1,31 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React from 'react'
+import {Routes, Route} from 'react-router-dom'
+
 import './App.css'
+import PokemonsList from './components/PokemonList/PokemonList'
+import PokemonPage from './components/PokemonPage/PokemonPage'
 
 function App() {
-  const [count, setCount] = useState(0)
+    return (
+        <div className="App">
+            <Routes>
+                <Route path='/' element={<PokemonsList/>}/>
+                <Route path="pokemon/:id" element={<PokemonPage/>}/>
+                <Route path="*" element={<NoMatch/>}/>
+            </Routes>
+        </div>
+    )
+}
 
-  return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Build something cool, bro</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-    </div>
-  )
+function NoMatch() {
+    return (
+        <div>
+            <h2>Nothing to see here!</h2>
+        </div>
+    );
 }
 
 export default App
