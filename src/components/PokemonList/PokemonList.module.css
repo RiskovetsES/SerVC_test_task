@@ -1,0 +1,36 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+p {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.paginationButton {
+    text-transform: uppercase;
+    background: linear-gradient(to bottom, #F5A623, #F5A623, #F5A623, #F5A623, #F5A623);
+    cursor: pointer;
+}
+
+.pageNumber {
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 18px;
+}
+
