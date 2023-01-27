@@ -19,7 +19,7 @@ const PokemonsList = () => {
     useEffect(() => {
         const fetchPokemons = async () => {
             const res = await getList(perPage * (currentPage - 1), perPage);
-            const pokemonsWithSprites = await Promise.all(res.data.results.map(async (pokemon) => {
+            const pokemonsWithSprites = await Promise.all(res.data.results.map(async (pokemon:Pokemon) => {
                 const sprite = await getOne(pokemon.name);
                 return {
                     ...pokemon,
