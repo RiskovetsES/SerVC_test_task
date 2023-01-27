@@ -11,7 +11,14 @@ interface Pokemon {
     weight: number;
     height: number;
     types: [{ type: { name: string } }];
-    stats: [{ stat: { name: string, base_stat: number } }];
+    stats: [{
+        base_stat: number;
+        stat: { name: string }
+    }];
+}
+
+interface PokemonParams {
+    id: string;
 }
 
 const PokemonPage: React.FC = () => {
@@ -46,7 +53,8 @@ const PokemonPage: React.FC = () => {
                         <p className={styles.text}>Types: {pokemon.types.map((type) => type.type.name).join(', ')}</p>
                         <ul className={styles.statsList}>
                             {pokemon.stats.map((stat) => (
-                                <li key={stat.stat.name} className={styles.statsItem}>{`${stat.stat.name}: ${stat.base_stat}px`}</li>
+                                <li key={stat.stat.name}
+                                    className={styles.statsItem}>{`${stat.stat.name}: ${stat.base_stat}px`}</li>
                             ))}
                         </ul>
                     </>

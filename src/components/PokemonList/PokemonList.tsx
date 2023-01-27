@@ -8,14 +8,7 @@ import styles from './PokemonList.module.css'
 interface Pokemon {
     name: string;
     url: string;
-    sprites: { front_default: string };
-}
-
-interface PokemonsResponse {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: Pokemon[];
+    sprites: string;
 }
 
 const PokemonsList = () => {
