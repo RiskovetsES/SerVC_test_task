@@ -22,5 +22,5 @@ export const getList = (offset = 20, limit = 20) =>
  * 
  * @url https://pokeapi.co/docs/v2#pokemon
  */
-export const getOne = (id: number | string) =>
+export const getOne = (id: string) =>
   api.get(`/pokemon/${id}`);
