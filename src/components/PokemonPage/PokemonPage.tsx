@@ -22,7 +22,7 @@ interface PokemonParams {
 }
 
 const PokemonPage: React.FC = () => {
-    const {id} = useParams<PokemonParams>();
+    const {id} = useParams<Record<string, string>>();
     const [pokemon, setPokemon] = useState<Pokemon>();
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -30,10 +30,18 @@ const PokemonPage: React.FC = () => {
     useEffect(() => {
         const fetchPokemon = async () => {
             try {
-                const res = await getOne(id);
-                setPokemon(res.data);
+                if (id) {
+                    const res = await getOne(id);
+                    setPokemon(res.data);
+                } else {
+                    setError("ID is not defined");
+                }
             } catch (err) {
-                setError(err.message);
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    setError("An unknown error occurred.");
+                }
             }
         }
         fetchPokemon();
